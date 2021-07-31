@@ -1,0 +1,25 @@
+syntax = "proto3";
+package link_shorter;
+option go_package = "../gen";
+
+
+service LinkShorter {
+  rpc Create(CreateRequest) returns (CreateResponse) {}
+  rpc Get(GetRequest) returns (GetResponse) {}
+}
+
+message CreateRequest {
+  string long_link = 1;
+}
+
+message CreateResponse {
+  string short_link = 1;
+}
+
+message GetRequest {
+  string short_link = 1;
+}
+
+message GetResponse {
+  string long_link = 1;
+}
