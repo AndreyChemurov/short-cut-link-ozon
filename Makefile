@@ -9,6 +9,9 @@ build: $(BUILD_FILE_PATH)
 run: ./bin/main
 	@./bin/main
 
+lint:
+	@golangci-lint run -v
+
 grpc-gen: $(LINK_SHORTER_PROTO_PATH)
 	@protoc -I internal/api/grpc/proto \
 		--go_out=internal/api/grpc/gen \
