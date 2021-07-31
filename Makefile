@@ -11,6 +11,7 @@ run: ./bin/main
 
 grpc-gen: $(LINK_SHORTER_PROTO_PATH)
 	@protoc -I internal/api/grpc/proto \
-		--plugin=protoc-gen-go-grpc \
 		--go_out=internal/api/grpc/gen \
+		--go-grpc_out=internal/api/grpc/gen \
+		--plugin=$(GOBIN)/protoc-gen-go \
 		$(LINK_SHORTER_PROTO_PATH)
