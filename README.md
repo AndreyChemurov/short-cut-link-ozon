@@ -2,7 +2,8 @@
 
 ## Информация
 - Приложение работает на порту ```8000```
-- Использовалось при создании: golang 1.16.6, postgres 13.2, linux debian 10, golangci-lint 1.41.1.</br></br>
+- Использовалось при создании: golang 1.16.6, postgres 13.2, linux debian 10, golangci-lint 1.41.1.
+- Длина ссылки = 10 символов после домена, например, http://ozon-test-task/Q1d9b4caYm </br></br>
 
 ## Запуск приложения
 ```bash
