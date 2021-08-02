@@ -17,7 +17,7 @@ services:
       dockerfile: Dockerfile
     env_file: .env
     volumes:
-      - /var/lib/docker/volumes:/code
+      - .:/code
     command: > 
       bash -c "while !</dev/tcp/postgres/5432; do sleep 1; done; 
       go build -o ./bin/main cmd/ozon/main.go 

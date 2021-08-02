@@ -6,8 +6,12 @@ import (
 )
 
 type Database interface {
-	Create(ctx context.Context, longLink string) (shortLink string, err error)
+	Create(ctx context.Context, longLink, shortLink string) error
 	Get(ctx context.Context, shortLink string) (longLink string, err error)
+
+	// Additional methods
+	CheckExistenceShortLink(ctx context.Context, shortLink string) (bool, error)
+	CheckExistenceLongLink(ctx context.Context, longLink string) (bool, error)
 }
 
 var (
