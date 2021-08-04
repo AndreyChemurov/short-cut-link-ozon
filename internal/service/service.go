@@ -11,7 +11,6 @@ import (
 
 const (
 	alphabet       = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_"
-	alphabetLength = uint64(len(alphabet))
 	linkLength     = 10
 )
 
