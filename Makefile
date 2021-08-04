@@ -3,6 +3,8 @@ BUILD_FILE_PATH = cmd/ozon/main.go
 LINK_SHORTER_FILENAME = link_shorter
 LINK_SHORTER_PROTO_PATH = internal/api/grpc/proto/$(LINK_SHORTER_FILENAME).proto
 
+.PHONY: test-db-up test test-db-down
+
 build: $(BUILD_FILE_PATH)
 	@go build -o ./bin/main $(BUILD_FILE_PATH)
 
@@ -11,6 +13,9 @@ run: ./bin/main
 
 lint:
 	@golangci-lint run -v
+
+test:
+	@docker-compose -f docker-compose.test.yml up
 
 grpc-gen: $(LINK_SHORTER_PROTO_PATH)
 	@protoc -I internal/api/grpc/proto \

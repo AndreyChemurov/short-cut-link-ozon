@@ -1,0 +1,30 @@
+version: '3.9'
+
+services: 
+  postgres_test:
+    restart: always
+    image: postgres:latest
+    hostname: postgres
+    container_name: ozon_postgres_test
+    env_file: .env
+    ports: 
+      - 5432
+  web_test:
+    restart: always
+    container_name: ozon_web_test
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    env_file: .env
+    volumes:
+      - .:/code
+    command: > 
+      bash -c "while !</dev/tcp/postgres/5432; do sleep 1; done; 
+      go build -o ./bin/main cmd/ozon/main.go 
+      && ./bin/main | go test -v -cover ./..."
+    ports: 
+      - 8000:8000
+    depends_on: 
+      - postgres_test
+    links:
+      - postgres_test
